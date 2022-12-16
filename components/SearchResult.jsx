@@ -1,3 +1,4 @@
+import { nanoid } from "nanoid";
 import Image from "next/image";
 import Loading from "./Loading";
 
@@ -6,7 +7,7 @@ const SearchResult = ({ movies, loading }) => {
     <section className="flex flex-wrap max-w-5xl items-center justify-around">
       {loading ? <Loading /> : null}
       {movies.map((movie, index) => (
-        <div className="flex flex-col items-center" key={index}>
+        <div className="flex flex-col items-center" key={nanoid()}>
           <Image
             className="rounded-xl"
             width={300}
