@@ -1,10 +1,13 @@
 import { useState } from "react";
+import Error from "./Error";
 import Loading from "./Loading";
 import SearchResult from "./SearchResult";
+
 const Form = () => {
   const [search, setSearch] = useState("");
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
   const handleChange = (e) => setSearch(e.target.value);
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -13,7 +16,14 @@ const Form = () => {
       const res = await fetch(
         `http://www.omdbapi.com/?s=${search}&apikey=89a340b7`
       );
-      const { Search: response } = await res.json();
+
+      const result = await res.json();
+      if (result.Response === "False") {
+        setError(result.Error);
+        return;
+      }
+      setError("");
+      const { Search: response } = result;
       setLoading(false);
       setMovies(response);
       setSearch("");
@@ -33,18 +43,31 @@ const Form = () => {
             value={search}
             onChange={handleChange}
           />
+          {error && <Error message={error} />}
           <button
-            className="bg-blue-500 w-full hover:bg-teal-700 text-md rounded-md text-white font-bold text-xl p-2 md:w-2/4"
+            className="bg-blue-500 flex justify-center items-center w-full hover:bg-teal-700 text-md rounded-md text-white font-bold text-xl p-2 md:w-2/4 "
             type="submit"
           >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="w-5 h-5 mx-2"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
+              />
+            </svg>
             Search
           </button>
         </div>
       </form>
-
-      {movies.length ? (
-        <SearchResult movies={movies} loading={loading} />
-      ) : null}
+      {loading && <Loading />}
+      {movies.length ? <SearchResult movies={movies} /> : null}
     </>
   );
 };
