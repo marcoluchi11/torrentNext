@@ -1,7 +1,8 @@
 import { nanoid } from "nanoid";
 import Image from "next/image";
+import Pagination from "./Pagination";
 
-const MovieInfo = ({ result }) => {
+const MovieInfo = ({ result, torrent }) => {
   const {
     Title,
     Genre,
@@ -14,6 +15,7 @@ const MovieInfo = ({ result }) => {
     Poster,
     Ratings,
   } = result;
+
   return (
     <>
       <div>
@@ -61,6 +63,7 @@ const MovieInfo = ({ result }) => {
         </div>
         <p>{Awards}</p>
       </div>
+      <Pagination />
     </>
   );
 };
