@@ -2,7 +2,7 @@ import Image from "next/image";
 import Form from "../components/Form";
 import Layout from "../components/Layout";
 import logo from "./../images/logoSlogan.png";
-export default function Home({ result }) {
+export default function Home() {
   return (
     <>
       <Layout>
