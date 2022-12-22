@@ -1,6 +1,6 @@
 import { nanoid } from "nanoid";
 import Image from "next/image";
-import Pagination from "./Pagination";
+import Link from "next/link";
 
 const MovieInfo = ({ result, torrent }) => {
   const {
@@ -14,56 +14,69 @@ const MovieInfo = ({ result, torrent }) => {
     Language,
     Poster,
     Ratings,
+    Runtime,
   } = result;
 
   return (
     <>
-      <div>
+      <div className="w-2/4 flex justify-center  text-black">
         <Image
           className="rounded-xl mx-10"
-          width={300}
-          height={300}
+          width={400}
+          height={100}
           src={Poster}
           alt={Title}
         />
       </div>
-      <div className="flex flex-col justify-between items-center">
-        <h1 className="text-3xl">
-          {Title} ({Year})
-        </h1>
-        <h3 className="text-xl ">{Genre}</h3>
-        <p className="text-center">{Plot}</p>
+      <div className="flex flex-col justify-between items-center w-3/4 lg:w-full">
+        <div className="flex flex-col w-full">
+          <h1 className="text-4xl tracking-wide  w-full">{Title}</h1>
+          <h3 className="text-xl w-full border-gray-500 border-b-2 py-2">
+            {Year} | {Runtime} |{" "}
+            <span className="text-lg px-4 rounded-full border-2 border-black">
+              {Genre}
+            </span>
+          </h3>
+        </div>
+        <div className="w-full">
+          <h3 className="text-xl font-bold mt-5">Plot</h3>
+          <p className="text-justify w-4/5 mb-5 ">{Plot}</p>
+        </div>
 
-        <div className="text-center">
-          <h3>Director</h3>
+        <div className="text-justify w-full">
+          <h3 className="text-2xl font-bold">Director</h3>
 
           <p>{Director}</p>
         </div>
 
-        <div className="text-center">
-          <h3>Writer</h3>
-          <p>{Writer}</p>
+        <div className="text-justify w-full my-3 hidden md:block">
+          <h3 className="text-2xl font-bold">Writer</h3>
+          <p className="mt-1">{Writer}</p>
         </div>
-        <div className="text-center">
-          <h3>Language</h3>
-          <p>{Language}</p>
+        <div className="text-justify w-full mb-5 hidden md:block">
+          <h3 className="text-2xl font-bold">Language</h3>
+          <p className="mt-1">{Language}</p>
         </div>
-        <div className="text-center">
-          <h3>Awards</h3>
-          <p>{Awards}</p>
+        <div className="text-left w-full mb-5 mt-3 md:mt-0 mx-0">
+          <h3 className="text-2xl font-bold mb-3">Awards</h3>
+          <p className=" bg-yellow-400 p-3 lg:w-2/4 rounded-md m-0">{Awards}</p>
         </div>
-        <div className="text-center">
-          <h1>Ratings</h1>
+        <div className="text-justify w-full mb-5 rating">
+          <h3 className="text-2xl font-bold mb-2">Ratings</h3>
           {Ratings.map((rating) => (
-            <div key={nanoid()}>
+            <div className="mb-2 rounded-md" key={nanoid()}>
               <h2>{rating.Source}</h2>
-              <p>{rating.Value}</p>
+              <p className=" w-1/3 rounded-full px-2">{rating.Value}</p>
             </div>
           ))}
         </div>
-        <p>{Awards}</p>
+
+        <Link href="/" className="w-full flex justify-center">
+          <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-3/4 mt-5">
+            Back
+          </button>
+        </Link>
       </div>
-      <Pagination />
     </>
   );
 };
