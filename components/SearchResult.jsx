@@ -1,9 +1,17 @@
 import { nanoid } from "nanoid";
 import Image from "next/image";
 import Link from "next/link";
+import { useContext } from "react";
+import { TorrentContext } from "../context/context";
 
 const SearchResult = ({ movies }) => {
-  console.log(movies[0].imdbID);
+  const { setLoading } = useContext(TorrentContext);
+  const handleClick = () => {
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+    }, 5000);
+  };
   return (
     <section className="flex flex-wrap max-w-5xl items-center justify-around">
       {movies.map((movie) => {
@@ -11,7 +19,11 @@ const SearchResult = ({ movies }) => {
           return null;
         }
         return (
-          <div className="flex flex-col items-center" key={nanoid()}>
+          <div
+            className="flex flex-col items-center"
+            key={nanoid()}
+            onClick={() => handleClick()}
+          >
             <Link href={`/title/${movie.imdbID}`}>
               <Image
                 className="rounded-xl hover:opacity-30"

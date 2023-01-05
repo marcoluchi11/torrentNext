@@ -1,7 +1,10 @@
 import Head from "next/head";
+import { useState } from "react";
 import Footer from "./Footer";
 import Header from "./Header";
+
 const Layout = ({ children }) => {
+  const [loading, setLoading] = useState(false);
   return (
     <div className="bg-gray-600 min-h-screen">
       <Head>
