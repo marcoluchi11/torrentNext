@@ -1,10 +1,10 @@
 import Layout from "../components/Layout";
-
+import ContactForm from "./../components/ContactForm";
 const Contact = () => {
   return (
     <Layout>
       <section>
-        <h2>Este es el contact form</h2>
+        <ContactForm />
       </section>
     </Layout>
   );
