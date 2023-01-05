@@ -1,13 +1,11 @@
 import MovieInfo from "../../components/MovieInfo";
 import Layout from "../../components/Layout";
-import PaginatedItems from "../../components/Pagination";
 const SingleMovie = ({ result, torrentList }) => {
   return (
     <Layout>
       <section className="bg-indigo-200  flex flex-col lg:flex-row justify-center items-center  rounded-md py-5">
         <MovieInfo result={result} torrentList={torrentList} />
       </section>
-      <PaginatedItems itemsPerPage={4} torrentList={torrentList} />
     </Layout>
   );
 };
