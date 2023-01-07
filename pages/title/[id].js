@@ -1,11 +1,13 @@
 import MovieInfo from "../../components/MovieInfo";
 import Layout from "../../components/Layout";
+import TableTorrent from "../../components/TableTorrent";
 const SingleMovie = ({ result, torrentList }) => {
   return (
     <Layout>
       <section className="bg-indigo-200  flex flex-col lg:flex-row justify-center items-center  rounded-md py-5">
         <MovieInfo result={result} torrentList={torrentList} />
       </section>
+      <TableTorrent torrentList={torrentList} />
     </Layout>
   );
 };
