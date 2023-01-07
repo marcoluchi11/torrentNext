@@ -1,9 +1,7 @@
 const Error = ({ message }) => {
   return (
-    <div role="alert" className="w-1/2">
-      <div className="bg-red-600 text-center text-xl text-white rounded-b  px-3 py-2  mb-5 mt-0 ">
-        <p>{message}</p>
-      </div>
+    <div className="bg-red-500  text-center  text-black px-4 py-3 m-5 md:w-1/4 w-3/4 rounded">
+      <p>{message}</p>
     </div>
   );
 };
