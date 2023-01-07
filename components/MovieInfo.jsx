@@ -30,10 +30,12 @@ const MovieInfo = ({ result, torrent }) => {
       </div>
       <div className="flex flex-col justify-between items-center w-3/4 lg:w-full">
         <div className="flex flex-col w-full">
-          <h1 className="text-4xl tracking-wide  w-full">{Title}</h1>
-          <h3 className="text-xl w-full border-gray-500 border-b-2 py-2">
-            {Year} | {Runtime} |{" "}
-            <span className="text-lg px-4 rounded-full border-2 border-black">
+          <h1 className="text-4xl tracking-wide w-full md:text-left text-center my-3">
+            {Title}
+          </h1>
+          <h3 className="text-xl w-full border-gray-500 border-b-2 py-2 ">
+            {Year} | {Runtime}
+            <span className="w-fit block text-lg px-4 rounded-full  border-2 border-black">
               {Genre}
             </span>
           </h3>
