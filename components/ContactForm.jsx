@@ -1,25 +1,21 @@
 import axios from "axios";
 import { useState } from "react";
+import Error from "./Error";
+import Success from "./Success";
 
 const ContactForm = () => {
-  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
-  const [showFailureMessage, setShowFailureMessage] = useState(false);
   const [data, setData] = useState({ email: "", message: "" });
+  const [success, setSuccess] = useState(false);
+  const [error, setError] = useState({ state: false, message: "" });
   const handleChange = (e) =>
     setData({ ...data, [e.target.name]: e.target.value });
-
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   await fetch("http://localhost:3000/api/hello", {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //     body: JSON.stringify(values),
-  //   });
-  // };
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (data.email === "" || data.message === "") {
+      setError({ state: true, message: `Error! Don't leave empty inputs` });
+      return;
+    }
+    setError(false);
     const res = await fetch("http://localhost:3000/api/sendgrid", {
       method: "POST",
       headers: {
@@ -35,13 +31,16 @@ const ContactForm = () => {
     const { error } = await res.json();
     if (error) {
       console.log(error);
-      setShowSuccessMessage(false);
-      setShowFailureMessage(true);
+      setError(true);
       return;
     }
-    setShowSuccessMessage(true);
-    setShowFailureMessage(false);
+    setError(false);
+    setSuccess(true);
     setData({ email: "", message: "" });
+    setTimeout(() => {
+      setSuccess(false);
+      setError(false);
+    }, 3000);
   };
   return (
     <form onSubmit={handleSubmit} className="flex flex-col items-center">
@@ -81,8 +80,8 @@ const ContactForm = () => {
           Send
         </button>
       </div>
-      {showSuccessMessage}
-      {showFailureMessage}
+      {success && <Success />}
+      {error.state && <Error message={error.message} />}
     </form>
   );
 };
