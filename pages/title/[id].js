@@ -19,7 +19,7 @@ export const getServerSideProps = async (context) => {
   const { id } = query;
   let torrentList = [];
   const res = await fetch(
-    `http://www.omdbapi.com/?i=${id}&apikey=${process.env.API_KEY}`
+    `https://www.omdbapi.com/?i=${id}&apikey=${process.env.API_KEY}`
   );
   const result = await res.json();
 
