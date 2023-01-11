@@ -16,7 +16,7 @@ const ContactForm = () => {
       return;
     }
     setError(false);
-    const res = await fetch("http://localhost:3000/api/sendgrid", {
+    const res = await fetch("/api/sendgrid", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
