@@ -14,9 +14,8 @@ const Form = () => {
     setLoading(true);
     setTimeout(async () => {
       const res = await fetch(
-        `http://www.omdbapi.com/?s=${search}&apikey=89a340b7`
+        `https://www.omdbapi.com/?s=${search}&apikey=89a340b7`
       );
-
       const result = await res.json();
       if (result.Response === "False") {
         setError(result.Error);
