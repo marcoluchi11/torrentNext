@@ -26,6 +26,5 @@ export const getServerSideProps = async (context) => {
   const url = `https://us-central1-buscatutorrent.cloudfunctions.net/app/torrent/${result.Title}`;
   const data = await fetch(url);
   torrentList = await data.json();
-
   return { props: { result, torrentList } };
 };
