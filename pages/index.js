@@ -12,7 +12,7 @@ export default function Home() {
     <>
       <Layout>
         <section className="flex flex-col justify-center items-center">
-          <Image src={logo} alt="holis" width={500} height={500} />
+          <Image src={logo} alt="logo" width={400} height={400} />
           <Form />
         </section>
 
