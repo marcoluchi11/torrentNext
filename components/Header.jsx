@@ -8,13 +8,7 @@ const Header = () => {
         <ul className="flex justify-between items-center bg-gray-700 ">
           <li className="m-5 p-3">
             <Link href="/">
-              <Image
-                responsive
-                width={100}
-                height={150}
-                src={logo}
-                alt="logo"
-              />
+              <Image width={100} height={150} src={logo} alt="weblogo" />
             </Link>
           </li>
           <li className="m-5 p-3 text-white text-xl">
