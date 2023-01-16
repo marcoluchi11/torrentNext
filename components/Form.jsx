@@ -19,6 +19,7 @@ const Form = () => {
       const result = await res.json();
       if (result.Response === "False") {
         setError(result.Error);
+        setLoading(false);
         return;
       }
       setError("");
