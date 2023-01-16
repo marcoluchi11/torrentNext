@@ -10,7 +10,7 @@ const SearchResult = ({ movies }) => {
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
-    }, 5000);
+    }, 7000);
   };
   return (
     <section className="flex flex-wrap max-w-5xl items-center justify-around">
