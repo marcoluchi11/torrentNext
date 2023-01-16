@@ -16,7 +16,7 @@ const Footer = () => {
           alt="Invitame un café en cafecito.app"
         />
       </a>
-      <small className="text-white">
+      <small className="text-white hidden sm:block">
         &copy; 2020-2022. All rights reserved.
       </small>
     </footer>
