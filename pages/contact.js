@@ -7,7 +7,11 @@ import {
 } from "react-icons/ai";
 import Link from "next/link";
 const Contact = () => {
-  return <Layout></Layout>;
+  return (
+    <Layout>
+      <ContactForm />
+    </Layout>
+  );
 };
 
 export default Contact;
