@@ -29,7 +29,7 @@ Create a pull request
 This project is licensed under the MIT License - see the LICENSE file for details.
 
 📧 Contact
-If you have any questions or suggestions, feel free to reach out to us at our email address: contact@buscatutorrent.com.
+If you have any questions or suggestions, feel free to reach out to us at our email address: marcoaluchi@hotmail.com
 
 🙏 Thanks
 We want to thank you for using BuscaTuTorrent. Your feedback and contributions are greatly appreciated. Happy torrenting! 🚀
